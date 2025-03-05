@@ -12,20 +12,66 @@ library(dplyr)
 
 library(data.table)
 
-read(nycdata.csv)
+nyc_data <- fread("nycdata.csv")
 ```
+
 Use and show data.table code to select the variables year, month, day, and hour from the imported flights data
+
+```{r}
+selected_flights <- nyc_data[, .(year, month, day, hour)]
+str(selected_flights)
+```
 
 Use and show data. table code to produce a table that shows a carrier of DL, an origin of JFK and a destination of SEA
 
+```{r}
+filtered_flights <- nyc_data[carrier == "DL" & origin == "JFK" & dest == "SEA"]
+
+str(filtered_flights)
+```
+
 Use and show data.table code to produce a table that shows a carrier of UA, a month of March, and an airtime that is below 330.
+
+```{r}
+filtered_flights_2 <- nyc_data[carrier == "UA" & month == 3 & air_time < 330]
+str(filtered_flights_2)
+```
 
 Use and show tidyverse code to produce a table that shows a carrier of UA, a month of March, and an airtime that is below 330.
 
+```{r}
+filtered_flights_3 <- nyc_data |>
+  filter(carrier == "UA", month == 3, air_time < 330)
+head(filtered_flights_3)
+```
+
 Use the data.table method to add a variable called speed that is the average air speed of the plane in miles per hour.
+
+```{r}
+flights1 <- nyc_data[, speed := (distance / air_time) * 60]
+str(flights1)
+```
 
 Use the tidyverse method to add a variable called speed that is the average air speed of the plane in miles per hour.
 
+```{r}
+flights2 <- nyc_data |>
+  mutate(speed = (distance / air_time) * 60)
+head(flights2)
+```
+
 Show and use coding to change the carrier abbreviation of UA to UniitedAir,
+
 7a. data.table method
+
+```{r}
+united_1<- nyc_data[carrier == "UA", carrier := "UnitedAir"]
+str(united_1)
+```
+
 7b. tidyverse method (Use a sequence of dplyr commands so that you can see the change in your table)
+
+```{r}
+united_2 <- nyc_data |>
+  mutate(carrier = ifelse(carrier == "UA", "UnitedAir", carrier))
+```
