@@ -1,9 +1,11 @@
 ---
 title: "dottable"
 author: "Andrew Hwang"
-format: html
+format: pdf
 editor: visual
 ---
+
+<https://github.com/Hwangster1/dottable>
 
 ```{r}
 library(tidyverse)
