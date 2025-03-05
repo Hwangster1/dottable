@@ -1,0 +1,31 @@
+---
+title: "dottable"
+author: "Andrew Hwang"
+format: html
+editor: visual
+---
+
+```{r}
+library(tidyverse)
+
+library(dplyr)
+
+library(data.table)
+
+read(nycdata.csv)
+```
+Use and show data.table code to select the variables year, month, day, and hour from the imported flights data
+
+Use and show data. table code to produce a table that shows a carrier of DL, an origin of JFK and a destination of SEA
+
+Use and show data.table code to produce a table that shows a carrier of UA, a month of March, and an airtime that is below 330.
+
+Use and show tidyverse code to produce a table that shows a carrier of UA, a month of March, and an airtime that is below 330.
+
+Use the data.table method to add a variable called speed that is the average air speed of the plane in miles per hour.
+
+Use the tidyverse method to add a variable called speed that is the average air speed of the plane in miles per hour.
+
+Show and use coding to change the carrier abbreviation of UA to UniitedAir,
+7a. data.table method
+7b. tidyverse method (Use a sequence of dplyr commands so that you can see the change in your table)
